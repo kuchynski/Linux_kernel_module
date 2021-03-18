@@ -1,0 +1,9 @@
+#!/bin/bash
+
+MODULE="./module_test.ko"
+
+#modinfo $MODULE
+insmod $MODULE
+
+
+

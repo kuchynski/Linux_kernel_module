@@ -1,0 +1,8 @@
+#!/bin/bash
+
+MODULE="./module_test.ko"
+
+rmmod $MODULE
+
+
+

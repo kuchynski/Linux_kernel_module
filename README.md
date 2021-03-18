@@ -1,4 +1,4 @@
-# Linux_kernel_module
+# The minimal Linux kernel module
 
 ## Module
 1. >$ cd ./module

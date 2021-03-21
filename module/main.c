@@ -19,14 +19,14 @@ static int __init init_function(void)
 		return -1;
 	}
 	memset(module_data, 0, sizeof(struct struct_module_data));
-	
+
 	module_data->fops.owner = THIS_MODULE;
 	module_data->fops.open = module_open;
 	module_data->fops.release = module_release;
 	module_data->fops.write = module_write;
 	module_data->fops.read = module_read;
 	module_data->fops.unlocked_ioctl = module_ioctl;
-	
+
 	module_data->dev.minor = MISC_DYNAMIC_MINOR;
 	module_data->dev.name = MODULE_NAME;
 	module_data->dev.fops = &module_data->fops;

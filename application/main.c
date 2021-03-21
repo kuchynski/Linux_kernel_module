@@ -19,17 +19,17 @@ int main(void)
 {
 	int ret;
 	int fd = open("/dev/" MODULE_NAME, O_RDWR);
-	
+
 	if(fd >= 0) {
 		char buf[BUFFER_SIZE];
-		ssize_t size_write; 
-		ssize_t size_read; 
+		ssize_t size_write;
+		ssize_t size_read;
 		size_t size_module_buffer;
-		
+
 		size_write = write(fd, buf, 5);
 		size_read = read(fd, buf, BUFFER_SIZE);
 		printf("%d bytes have been written, %d bytes have been read\n", size_write, size_read);
-	
+
 		size_write = write(fd, buf, BUFFER_SIZE);
 		size_read = read(fd, buf, BUFFER_SIZE);
 		printf("%d bytes have been written, %d bytes have been read\n", size_write, size_read);
@@ -41,7 +41,7 @@ int main(void)
 		close(fd);
 		return 0;
 	}
-	
+
 	printf("error open %s %d\n", MODULE_NAME, errno);
 	return -1;
 }

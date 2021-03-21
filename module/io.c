@@ -29,7 +29,7 @@ int module_release(struct inode *inode, struct file *file)
 ssize_t module_write(struct file *file, const char *buff, size_t len, loff_t *off)
 {
 	struct struct_module_data *md = (struct struct_module_data *)file->private_data;
-	
+
 	md->size = (len <= BUFFER_SIZE)? len : BUFFER_SIZE;
 	memcpy(md->data, buff, md->size);
 
@@ -59,7 +59,7 @@ long module_ioctl(struct file *file, unsigned int code, unsigned long arg)
 		case IOCTL_MODULE_0:
 			put_user(md->open_count, (int __user *)arg);
 			break;
-		case IOCTL_MODULE_1:		
+		case IOCTL_MODULE_1:
 			put_user(md->size, (size_t __user *)arg);
 			break;
 		default:

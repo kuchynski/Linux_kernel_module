@@ -31,7 +31,7 @@ ssize_t module_write(struct file *file, const char *buff, size_t len, loff_t *of
 	struct struct_module_data *md = (struct struct_module_data *)file->private_data;
 
 	md->size = (len <= BUFFER_SIZE)? len : BUFFER_SIZE;
-	memcpy(md->data, buff, md->size);
+	copy_from_user(md->data, buff, md->size);
 
 	printk(KERN_INFO "%s: %d bytes have been written\n", MODULE_NAME, md->size);
 	return md->size;
@@ -43,7 +43,7 @@ ssize_t module_read(struct file *file, char *buff, size_t len, loff_t *off)
 
 	if(len > md->size)
 		len = md->size;
-	memcpy(buff, md->data, len);
+	copy_to_user(buff, md->data, len);
 
 	printk(KERN_INFO "%s: %d bytes have been read\n", MODULE_NAME, len);
 	return len;
